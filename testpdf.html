@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test PDF Downloder</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-----------------PDF Converter Link--------------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+
+    <!-------------------Summernote Link--------------------------------------->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#comment").summernote();
+            
+            $("#btn-1").click(function () {
+                var comment = $.trim($("#comment").val());
+                if (comment != "") {
+                    // Show alert dialog if value is not blank
+                    
+                    var doc = new jsPDF();
+
+                    doc.fromHTML(comment, 10, 10);
+                    doc.from(comment,10,10);
+                    doc.save("file.pdf");
+                }
+            });
+                
+        });
+
+    </script>
+</head>
+
+<body>
+    <textarea id="comment" rows="5" cols="50"></textarea>
+    <p><button type="button" id="btn-1">Get Value</button></p>
+    <p><strong>
+
+
+  <script src="pdf.js"></script>          
+
+</body>
+
+</html>
